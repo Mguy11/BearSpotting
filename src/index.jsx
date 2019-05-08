@@ -1,18 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+    HashRouter as Router,
+    Route,
+    Switch,
+    Link
+} from "react-router-dom";
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
+import FullPage from "./components/fullpage";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Demo extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1 className="title">React Page Scroller Demo</h1>
+                <div className="links">
+                    <div className="link">
+                    <button style={{position: "absolute", top: "50%", left: "48%"}}>
+                        <Link to="/fullpage">Full page demo</Link>
+                    </button>
+                    </div>
+                   
+                </div>
+            </div>
+        )
+    }
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(
+    <Router basename="/demos">
+        <div>
+            <Switch>
+                <Route exact path="/" component={Demo}/>
+                <Route path="/fullpage" component={FullPage}/>
+               
+            </Switch>
+        </div>
+    </Router>,
+    document.getElementById("root")
+);

@@ -1,10 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import FullPage from './components/FullPage';
 
 function App() {
   return (
-    <div className="App">
+    <div className="body">
+    <main >
+      <FullPage></FullPage>
+    </main>
       
     </div>
   );
